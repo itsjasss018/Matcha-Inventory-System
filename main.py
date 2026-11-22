@@ -1,4 +1,13 @@
-from inventory import add_product, view_inventory, generate_mock_data
+
+from inventory import (
+    add_product,
+    view_inventory,
+    generate_mock_data,
+    linear_search,
+    binary_search,
+    performance_testing
+)
+
 
 def main():
     while True:
@@ -25,10 +34,10 @@ def main():
             view_inventory()
 
         elif choice == "3":
-            print("\nLinear Search is not yet integrated.")
+            linear_search()
 
         elif choice == "4":
-            print("\nBinary Search is not yet integrated.")
+            binary_search()
 
         elif choice == "5":
             print("\nSelection Sort is not yet integrated.")
@@ -40,7 +49,7 @@ def main():
             generate_mock_data()
 
         elif choice == "8":
-            print("\nPerformance Testing is not yet integrated.")
+            performance_testing()
 
         elif choice == "9":
             print("\nThank you for using Matcha Inventory System!")
