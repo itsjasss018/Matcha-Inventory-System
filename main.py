@@ -1,13 +1,25 @@
+
 from inventory import (
     add_product,
     view_inventory,
     generate_mock_data,
+    inventory
+)
+
+# Ella's Sorting Functions
+from sorting import (
+    selection_sort_menu,
+    merge_sort_menu,
+    sorting_performance_testing
+)
+
+# Searching Functions
+from searching import (
     linear_search,
     binary_search,
-    performance_testing,
-    inventory  # for sorting -ella
+    performance_testing
 )
-from sorting import selection_sort_menu, merge_sort_menu, sorting_performance_testing  # for sorting -ella
+
 
 def main():
     while True:
@@ -22,7 +34,7 @@ def main():
         print("[6] Merge Sort")
         print("[7] Generate Mock Data")
         print("[8] Performance Testing")
-        print("[9] Sorting Performance Testing")  # for sorting -ella
+        print("[9] Sorting Performance Testing")
         print("[10] Exit")
         print("=" * 40)
 
@@ -41,10 +53,10 @@ def main():
             binary_search()
 
         elif choice == "5":
-            selection_sort_menu(inventory)  # for sorting -ella
+            selection_sort_menu(inventory)
 
         elif choice == "6":
-            merge_sort_menu(inventory)  # for sorting -ella
+            merge_sort_menu(inventory)
 
         elif choice == "7":
             generate_mock_data()
@@ -53,7 +65,7 @@ def main():
             performance_testing()
 
         elif choice == "9":
-            sorting_performance_testing(inventory)  # for sorting -ella
+            sorting_performance_testing(inventory)
 
         elif choice == "10":
             print("\nThank you for using Matcha Inventory System!")
@@ -61,6 +73,7 @@ def main():
 
         else:
             print("\nInvalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()
