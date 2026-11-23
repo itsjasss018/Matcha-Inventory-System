@@ -1,15 +1,10 @@
-import time
 import random
 from product import MatchaProduct
 
 # Stores all product records
 inventory = []
 
-
-# ==========================================
 # ADD PRODUCT
-# ==========================================
-
 def add_product():
     print("\n========== ADD PRODUCT ==========")
 
@@ -62,12 +57,7 @@ def add_product():
 
     print("\nProduct added successfully!")
 
-
-# ==========================================
 # VIEW INVENTORY
-# ==========================================
-
-
 def view_inventory():
     print("\n========== MATCHA INVENTORY ==========")
 
@@ -99,9 +89,8 @@ def view_inventory():
         print(f"Total products: {len(inventory)}")
 
 
-# ==========================================
-# MOCK DATA GENERATOR
-# ==========================================
+
+#MOCK DATA GENERATOR
 
 def generate_mock_data():
 
@@ -183,7 +172,3 @@ def generate_mock_data():
     print("\nMock data generated successfully!")
     print(f"Total records generated: {len(inventory):,}")
     print("All product IDs are unique.")
-    
-# ==========================================
-# END OF INVENTORY MODULE
-# ==========================================

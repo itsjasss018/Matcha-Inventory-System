@@ -1,12 +1,9 @@
-
 import time
 from inventory import inventory
+from sorting import merge_sort_by_id
 
 
-# ==========================================
 # LINEAR SEARCH
-# ==========================================
-
 def linear_search():
     print("\n========== LINEAR SEARCH ==========")
 
@@ -15,6 +12,10 @@ def linear_search():
         return
 
     search_id = input("Enter Product ID to search: ").strip()
+
+    if not search_id:
+        print("Please enter a Product ID.")
+        return
 
     for product in inventory:
         if product.product_id.lower() == search_id.lower():
@@ -28,11 +29,7 @@ def linear_search():
 
     print("\nProduct not found.")
 
-
-# ==========================================
 # BINARY SEARCH
-# ==========================================
-
 def binary_search():
     print("\n========== BINARY SEARCH ==========")
 
@@ -42,10 +39,12 @@ def binary_search():
 
     search_id = input("Enter Product ID to search: ").strip().lower()
 
-    sorted_inventory = sorted(
-        inventory,
-        key=lambda product: product.product_id.lower()
-    )
+    if not search_id:
+        print("Please enter a Product ID.")
+        return
+
+    # Manually sort using Merge Sort
+    sorted_inventory = merge_sort_by_id(inventory)
 
     low = 0
     high = len(sorted_inventory) - 1
@@ -67,19 +66,17 @@ def binary_search():
 
         elif current_id < search_id:
             low = mid + 1
+
         else:
             high = mid - 1
 
     print("\nProduct not found.")
 
 
-# ==========================================
-# PERFORMANCE TESTING
-# ==========================================
-
+# SEARCH PERFORMANCE TESTING
 def performance_testing():
 
-    print("\n========== PERFORMANCE TESTING ==========")
+    print("\n========== SEARCH PERFORMANCE TESTING ==========")
 
     if len(inventory) == 0:
         print("Inventory is empty.")
@@ -88,11 +85,10 @@ def performance_testing():
 
     search_id = inventory[-1].product_id.lower()
 
-    sorted_inventory = sorted(
-        inventory,
-        key=lambda product: product.product_id.lower()
-    )
+    # Prepare sorted data BEFORE timing
+    sorted_inventory = merge_sort_by_id(inventory)
 
+    # LINEAR SEARCH TIMING
     start_time = time.perf_counter()
 
     for product in inventory:
@@ -101,6 +97,7 @@ def performance_testing():
 
     linear_time = time.perf_counter() - start_time
 
+    # BINARY SEARCH TIMING
     low = 0
     high = len(sorted_inventory) - 1
 
@@ -112,8 +109,10 @@ def performance_testing():
 
         if current_id == search_id:
             break
+
         elif current_id < search_id:
             low = mid + 1
+
         else:
             high = mid - 1
 
@@ -126,13 +125,8 @@ def performance_testing():
     print(f"Linear Search: {linear_time:.10f} seconds")
     print(f"Binary Search: {binary_time:.10f} seconds")
 
-    print("\n========== COMPARISON ==========")
-
-    if linear_time < binary_time:
-        print("Linear Search was faster in this test.")
-    elif binary_time < linear_time:
-        print("Binary Search was faster in this test.")
-    else:
-        print("Both algorithms had equal measured times.")
+    print("\n========== BIG-O COMPARISON ==========")
+    print("Linear Search: O(n)")
+    print("Binary Search: O(log n)")
 
     print("\nPerformance testing completed!")
